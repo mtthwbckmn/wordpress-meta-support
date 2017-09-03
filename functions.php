@@ -19,7 +19,7 @@ function insertMeta() {
     $siteName = get_bloginfo( 'name' ); // Get WordPress site title.
     $genLink  = home_url( add_query_arg( array(), $wp->request ) ); // Generate URL based on WordPress request.
     
-    if ( !is_singular() ) {
+    if ( !is_singular() || is_home() || is_front_page() ) {
         echo '<meta property="og:url" content="' . $genLink . '">'."\n";
         echo '<meta property="og:type" content="website">'."\n";
         echo '<meta property="og:description" content="' . $defDesc . '">'."\n";
@@ -52,7 +52,11 @@ function insertMeta() {
         } else {
             echo '<meta property="og:url" content="' . $genLink . '">'."\n";
         }
-        echo '<meta property="og:type" content="article">'."\n";
+        if ( is_page() ) {
+            echo '<meta property="og:type" content="website">'."\n";
+        } else {
+            echo '<meta property="og:type" content="article">'."\n";
+        }
         if ( $desc ) {
             echo '<meta property="og:description" content="' . $desc . '">'."\n";
         } else {
