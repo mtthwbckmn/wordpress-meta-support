@@ -1,5 +1,11 @@
 <?php
 
+/*
+Description: Automatically add Open Graph + Twitter Card support for WordPress.
+File Path: wordpress-meta-support/functions.php
+Copyright (c) 2017 Matthew Beckman (https://matthewbeckman.co)
+*/
+
 /* Add Open Graph & Twitter Card Support */
 function insertMeta() {
     
