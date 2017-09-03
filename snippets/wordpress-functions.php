@@ -22,5 +22,6 @@ wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); // Im
 esc_attr( $yourImageVariable[0] ); // Parse image array for image URL.
 $yourImageVariable[1]; // Parse image array for image width.
 $yourImageVariable[2]; // Parse image array for image height.
+get_the_archive_title(); // Archive page title.
 
 ?>
