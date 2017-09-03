@@ -20,22 +20,22 @@ function insertMeta() {
     $genLink  = home_url( add_query_arg( array(), $wp->request ) ); // Generate URL based on WordPress request.
     
     if ( !is_singular() ) {
-        echo '<meta property="og:url" content="' . $genLink . '">';
-        echo '<meta property="og:type" content="website">';
-        echo '<meta property="og:description" content="' . $defDesc . '">';
-        echo '<meta property="og:title" content="' . $defTitle . '">';
-        echo '<meta property="og:site_name" content="' . $siteName . '">';
-        echo '<meta property="og:image" content="' . $defImg . '">';
-        echo '<meta property="og:image:height" content="' . $defHeight . '">';
-        echo '<meta property="og:image:width" content="' . $defWidth . '">';
+        echo '<meta property="og:url" content="' . $genLink . '">'."\n";
+        echo '<meta property="og:type" content="website">'."\n";
+        echo '<meta property="og:description" content="' . $defDesc . '">'."\n";
+        echo '<meta property="og:title" content="' . $defTitle . '">'."\n";
+        echo '<meta property="og:site_name" content="' . $siteName . '">'."\n";
+        echo '<meta property="og:image" content="' . $defImg . '">'."\n";
+        echo '<meta property="og:image:height" content="' . $defHeight . '">'."\n";
+        echo '<meta property="og:image:width" content="' . $defWidth . '">'."\n";
         if ( $fbAppId ) {
-            echo '<meta property="fb:app_id" content="' . $fbAppId . '">';
+            echo '<meta property="fb:app_id" content="' . $fbAppId . '">'."\n";
         }
-        echo '<meta name="twitter:card" content="summary">';
-        echo '<meta name="twitter:site" content="@' . $twitter . '">';
-        echo '<meta name="twitter:title" content="' . $defTitle . '">';
-        echo '<meta name="twitter:description" content="' . $defDesc . '">';
-        echo '<meta name="twitter:image" content="' . $defImg . '">';
+        echo '<meta name="twitter:card" content="summary">'."\n";
+        echo '<meta name="twitter:site" content="@' . $twitter . '">'."\n";
+        echo '<meta name="twitter:title" content="' . $defTitle . '">'."\n";
+        echo '<meta name="twitter:description" content="' . $defDesc . '">'."\n";
+        echo '<meta name="twitter:image" content="' . $defImg . '">'."\n";
     } else {
         /* WordPress Post + Page Defined Variables */
         $title  = get_the_title(); // Get post title.
@@ -48,58 +48,58 @@ function insertMeta() {
 
         /* Open Graph */
         if ( $link ) {
-            echo '<meta property="og:url" content="' . $link . '">';
+            echo '<meta property="og:url" content="' . $link . '">'."\n";
         } else {
-            echo '<meta property="og:url" content="' . $genLink . '">';
+            echo '<meta property="og:url" content="' . $genLink . '">'."\n";
         }
-        echo '<meta property="og:type" content="article">';
+        echo '<meta property="og:type" content="article">'."\n";
         if ( $desc ) {
-            echo '<meta property="og:description" content="' . $desc . '">';
+            echo '<meta property="og:description" content="' . $desc . '">'."\n";
         } else {
-            echo '<meta property="og:description" content="' . $defDesc . '">';
+            echo '<meta property="og:description" content="' . $defDesc . '">'."\n";
         }
         if ( $title ) {
-            echo '<meta property="og:title" content="' . $title . '">';
+            echo '<meta property="og:title" content="' . $title . '">'."\n";
         } else {
-            echo '<meta property="og:title" content="' . $defTitle . '">';
+            echo '<meta property="og:title" content="' . $defTitle . '">'."\n";
         }
-        echo '<meta property="og:site_name" content="' . $siteName . '">';
+        echo '<meta property="og:site_name" content="' . $siteName . '">'."\n";
         if ( $img ) {
-            echo '<meta property="og:image" content="' . $img . '">';
-            echo '<meta property="og:image:height" content="' . $width . '">';
-            echo '<meta property="og:image:width" content="' . $height . '">';
+            echo '<meta property="og:image" content="' . $img . '">'."\n";
+            echo '<meta property="og:image:height" content="' . $width . '">'."\n";
+            echo '<meta property="og:image:width" content="' . $height . '">'."\n";
         } else {
-            echo '<meta property="og:image" content="' . $defImg . '">';
-            echo '<meta property="og:image:height" content="' . $defWidth . '">';
-            echo '<meta property="og:image:width" content="' . $defHeight . '">';
+            echo '<meta property="og:image" content="' . $defImg . '">'."\n";
+            echo '<meta property="og:image:height" content="' . $defWidth . '">'."\n";
+            echo '<meta property="og:image:width" content="' . $defHeight . '">'."\n";
         }
         
         /* Facebook Options */
         if ( $fbAppId ) {
-            echo '<meta property="fb:app_id" content="' . $fbAppId . '">';
+            echo '<meta property="fb:app_id" content="' . $fbAppId . '">'."\n";
         }
         
         /* Twitter Cards */
-        echo '<meta name="twitter:card" content="summary">';
+        echo '<meta name="twitter:card" content="summary">'."\n";
         if ( $twitter ) {
-            echo '<meta name="twitter:site" content="@' . $twitter . '">';
+            echo '<meta name="twitter:site" content="@' . $twitter . '">'."\n";
         } else {
             // The Twitter username was left blank. Do nothing.
         }
         if ( $title ) {
-            echo '<meta name="twitter:title" content="' . $title . '">';
+            echo '<meta name="twitter:title" content="' . $title . '">'."\n";
         } else {
-            echo '<meta name="twitter:title" content="' . $defTitle . '">'; 
+            echo '<meta name="twitter:title" content="' . $defTitle . '">'."\n"; 
         }
         if ( $desc ) {
-            echo '<meta name="twitter:description" content="' . $desc . '">';
+            echo '<meta name="twitter:description" content="' . $desc . '">'."\n";
         } else {
-            echo '<meta name="twitter:description" content="' . $defDesc . '">';
+            echo '<meta name="twitter:description" content="' . $defDesc . '">'."\n";
         }
         if ( $img ) {
-            echo '<meta name="twitter:image" content="' . $img . '">';
+            echo '<meta name="twitter:image" content="' . $img . '">'."\n";
         } else {
-            echo '<meta name="twitter:image" content="' . $defImg . '">';
+            echo '<meta name="twitter:image" content="' . $defImg . '">'."\n";
         }
     }
 }
