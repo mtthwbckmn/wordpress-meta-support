@@ -6,7 +6,7 @@ function insertMeta() {
     global $wp; // Get WordPress data.
     global $post; // Get post data.
      
-    /* User Variables */
+    /* User Defaults */
     $defTitle  = "My Site Title"; // Default Title
     $defDesc   = "My site's description."; // Default Description
     $defImg    = "https://example.com/image.jpg"; // Default Image
@@ -15,7 +15,7 @@ function insertMeta() {
     $fbAppId   = "123myfacebookappid"; // Facebook App ID
     $twitter   = "my_twitter_account"; // Twitter Account
     
-    /* WordPress Variables */
+    /* WordPress Defined Variables */
     $siteName = get_bloginfo( 'name' ); // Get WordPress site title.
     $genLink  = home_url( add_query_arg( array(), $wp->request ) ); // Generate URL based on WordPress request.
     
@@ -37,7 +37,7 @@ function insertMeta() {
         echo '<meta name="twitter:description" content="' . $defDesc . '">';
         echo '<meta name="twitter:image" content="' . $defImg . '">';
     } else {
-        /* WordPress Variables */
+        /* WordPress Post + Page Defined Variables */
         $title  = get_the_title(); // Get post title.
         $link   = get_permalink(); // Get post permalink.
         $desc   = wp_trim_words( apply_filters( 'the_content', $post->post_content ), 30 ); // Get content & trim to 30 words.
