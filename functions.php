@@ -19,7 +19,7 @@ function insertMeta() {
     $siteName = get_bloginfo( 'name' ); // Get WordPress site title.
     $genLink  = home_url( add_query_arg( array(), $wp->request ) ); // Generate URL based on WordPress request.
     
-    if ( !is_singular() || is_home() || is_front_page() ) {
+    if ( is_home() || is_front_page() ) {
         echo '<meta property="og:url" content="' . $genLink . '">'."\n";
         echo '<meta property="og:type" content="website">'."\n";
         echo '<meta property="og:description" content="' . $defDesc . '">'."\n";
@@ -38,13 +38,14 @@ function insertMeta() {
         echo '<meta name="twitter:image" content="' . $defImg . '">'."\n";
     } else {
         /* WordPress Post + Page Defined Variables */
-        $title  = get_the_title(); // Get post title.
-        $link   = get_permalink(); // Get post permalink.
-        $desc   = wp_trim_words( apply_filters( 'the_content', $post->post_content ), 30 ); // Get content & trim to 30 words.
-        $thumb  = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); // Get image array.
-        $img    = esc_attr( $thumb[0] ); // Parse array for image URL.
-        $width  = $thumb[1]; // Parse array for image width.
-        $height = $thumb[2]; // Parse array for image height.
+        $title   = get_the_title(); // Get post title.
+        $link    = get_permalink(); // Get post permalink.
+        $desc    = wp_trim_words( apply_filters( 'the_content', $post->post_content ), 30 ); // Get content & trim to 30 words.
+        $thumb   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); // Get image array.
+        $img     = esc_attr( $thumb[0] ); // Parse array for image URL.
+        $width   = $thumb[1]; // Parse array for image width.
+        $height  = $thumb[2]; // Parse array for image height.
+        $archive = get_the_archive_title(); // Get archive title.
 
         /* Open Graph */
         if ( $link ) {
@@ -52,23 +53,25 @@ function insertMeta() {
         } else {
             echo '<meta property="og:url" content="' . $genLink . '">'."\n";
         }
-        if ( is_page() ) {
+        if ( is_page() || is_archive() ) {
             echo '<meta property="og:type" content="website">'."\n";
         } else {
             echo '<meta property="og:type" content="article">'."\n";
         }
-        if ( $desc ) {
+        if ( $desc && !is_archive() ) {
             echo '<meta property="og:description" content="' . $desc . '">'."\n";
         } else {
             echo '<meta property="og:description" content="' . $defDesc . '">'."\n";
         }
-        if ( $title ) {
+        if ( $title && !is_archive() ) {
             echo '<meta property="og:title" content="' . $title . '">'."\n";
+        } elseif ( $archive && is_archive() ) {
+            echo '<meta property="og:title" content="' . $archive . '">'."\n";
         } else {
             echo '<meta property="og:title" content="' . $defTitle . '">'."\n";
         }
         echo '<meta property="og:site_name" content="' . $siteName . '">'."\n";
-        if ( $img ) {
+        if ( $img && !is_archive ) {
             echo '<meta property="og:image" content="' . $img . '">'."\n";
             echo '<meta property="og:image:height" content="' . $width . '">'."\n";
             echo '<meta property="og:image:width" content="' . $height . '">'."\n";
@@ -90,17 +93,19 @@ function insertMeta() {
         } else {
             // The Twitter username was left blank. Do nothing.
         }
-        if ( $title ) {
+        if ( $title && !is_archive() ) {
             echo '<meta name="twitter:title" content="' . $title . '">'."\n";
-        } else {
+        } elseif ( $archive && is_archive() ) {
+            echo '<meta name="twitter:title" content="' . $archive . '">'."\n";
+        }else {
             echo '<meta name="twitter:title" content="' . $defTitle . '">'."\n"; 
         }
-        if ( $desc ) {
+        if ( $desc && !is_archive() ) {
             echo '<meta name="twitter:description" content="' . $desc . '">'."\n";
         } else {
             echo '<meta name="twitter:description" content="' . $defDesc . '">'."\n";
         }
-        if ( $img ) {
+        if ( $img && !is_archive() ) {
             echo '<meta name="twitter:image" content="' . $img . '">'."\n";
         } else {
             echo '<meta name="twitter:image" content="' . $defImg . '">'."\n";
