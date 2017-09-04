@@ -35,6 +35,7 @@ The following sites are fully supported for sharing:
 >##### Development Note: Features are added in order of priority. The top of the list is more highly prioritized than the bottom. Please submit feature requests & bug reports using GitHub [here](https://github.com/mtthwbckmn/wordpress-meta-support/issues).
 
 ### Change Log
+* **1.2.1** - **September 4, 2017** - Fixed a bug that showed the default image for posts, instead of grabbing the posts image. 
 * **1.2** - **September 3, 2017** - Renamed `generator.php` to `functions.php` to avoid confusion. Changed from MIT License to GPLv3. Added `snippets` section. Removed code of conduct from repository. Changed some comment wording. Added basic WordPress head snippet. Added WordPress functions snippet. Added supported websites to documentation. Added line breaks after meta tags. Change type to *website* on homepage and singular pages. Grab title from singular pages instead of depending on default. Set archive page to use default description and category title. 
 * **1.1** - **August 25, 2017** - Removed the user variable `defLink`, and replaced with an automatically generated URL for non-singular pages. Removed the user variable `siteName`, and replaced with the site name defined in WordPress' settings. Added optional `fb:app_id` property for Facebook. Changed default `type` to website when on non-singular pages. Still defaults to article when on singular pages.
 * **1.0** - **August 23, 2017** - First release.
