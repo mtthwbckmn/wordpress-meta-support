@@ -77,7 +77,7 @@ function insertMeta() {
             echo '<meta property="og:title" content="' . $defTitle . '">'."\n";
         }
         echo '<meta property="og:site_name" content="' . $siteName . '">'."\n";
-        if ( $img && !is_archive ) {
+        if ( $img && !is_archive() ) {
             echo '<meta property="og:image" content="' . $img . '">'."\n";
             echo '<meta property="og:image:height" content="' . $width . '">'."\n";
             echo '<meta property="og:image:width" content="' . $height . '">'."\n";
